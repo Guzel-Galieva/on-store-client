@@ -3,7 +3,7 @@ import { Button, Card, Carousel, Col, Container, Image, Row, ToggleButton } from
 import { useParams } from 'react-router-dom'
 import { fetchOneProduct } from "../http/productApi"
 import { addProductB } from '../http/basketApi'
-import sizeImage from "C:/Users/MAGGIC/Desktop/2 сем/react/onstore123/client/src/assets/size.png"
+import sizeImage from "../assets/size.png"
 
 const ProductPage = () => {
     const [product, setProduct] = useState({ })
