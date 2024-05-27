@@ -16,13 +16,13 @@ const BasketPage = observer(() => {
 
   const { product } = useContext(Context)
   const [smShow, setSmShow] = useState(false)
-  const [render, setRender] = useState(false)
+  const [render2, setRender2] = useState(true)
   // const { id } = useParams()
 
 
   useEffect(() => {
     fetchBasket().then(data => product.setBasket(data))
-  }, [render])
+  }, [render2])
 
   const deleteOne = (id) => {
     deleteProduct({id})
@@ -39,7 +39,7 @@ const BasketPage = observer(() => {
         {product.basket.map(productb =>
           <Col key={productb.id*100}>
             <ProductItem key={productb.id} product={productb} />
-            <Button key={productb.id*1000} onClick={() => {deleteOne(productb.id); setRender(!render)}} className="me-2">
+            <Button key={productb.id*1000} onClick={() => {deleteOne(productb.id); setRender2(!render2)}} className="me-2">
               Удалить
             </Button>
           </Col>

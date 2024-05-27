@@ -15,7 +15,7 @@ const Seller = observer(() => {
 
     useEffect(() => {
         fetchUsersProducts().then(data => product.setUserProducts(data))
-    }, [productVisible, render])
+    }, [render, productVisible])
 
     const deleteOne = (id) => {
         deleteProductSell({ id })
