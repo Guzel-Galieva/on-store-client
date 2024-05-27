@@ -7,7 +7,7 @@ const TypeBar = observer(() => {
   const {product} = useContext(Context)
 
   return (
-    <ListGroup className={"mt-5"}>
+    <ListGroup className={"mt-5"} style={{ position: "fixed" }}>
         {product.types.map(type => 
             <ListGroup.Item
                 style={{cursor: 'pointer'}}

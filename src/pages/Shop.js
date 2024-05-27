@@ -15,7 +15,7 @@ const Shop = observer(() => {
 
     useEffect(() => {
         fetchTypes().then(data => product.setTypes(data))
-        fetchProducts(null, 1, 4).then(data => {
+        fetchProducts(null, 1, 20).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
         })
@@ -23,7 +23,7 @@ const Shop = observer(() => {
 
 
     useEffect(() => {
-        fetchProducts(product.selectedType.id, product.page, 4).then(data => {
+        fetchProducts(product.selectedType.id, product.page, 20).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
         })
@@ -33,7 +33,7 @@ const Shop = observer(() => {
         <Container>
             <Row className="mt-2">
                 <Col md={3}>
-                    <TypeBar />
+                    <TypeBar style={{ position: "fixed" }}/>
                 </Col>
                 <Col md={9}>
                     <ProductList />

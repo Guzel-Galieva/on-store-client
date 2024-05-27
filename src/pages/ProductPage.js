@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Image, Row, ToggleButton } from "react-bootstrap";
+import React, { useEffect, useState } from 'react'
+import { Button, Card, Carousel, Col, Container, Image, Row, ToggleButton } from "react-bootstrap"
 import { useParams } from 'react-router-dom'
-import { fetchOneProduct } from "../http/productApi";
-import { addProductB } from '../http/basketApi';
+import { fetchOneProduct } from "../http/productApi"
+import { addProductB } from '../http/basketApi'
+import sizeImage from "C:/Users/MAGGIC/Desktop/2 сем/react/onstore123/client/src/assets/size.png"
 
 const ProductPage = () => {
-    const [product, setProduct] = useState({ info: [] })
+    const [product, setProduct] = useState({ })
     const { id } = useParams()
     const [checked, setChecked] = useState(true);
+    
+
+
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         fetchOneProduct(id).then(data => setProduct(data))
@@ -15,14 +20,27 @@ const ProductPage = () => {
 
 
     const addProductToBasket = () => {
-        addProductB({id})
+        addProductB({ id }).then(data => console.log(data))
     }
+
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    };
 
     return (
         <Container className="mt-3">
             <Row>
+
                 <Col md={6}>
-                    <Image width={600} height={600} src={'http://localhost:5000/' + product.img} className='m-3' />
+                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                        <Carousel.Item>
+                            <Image width={600} height={600} src={'http://localhost:5000/' + product.img} className='m-3' />
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <Image width={600} height={600} src={sizeImage} className='m-3' />
+                        </Carousel.Item>
+                    </Carousel>
+                    {/* <Image width={600} height={600} src={'http://localhost:5000/' + product.img} className='m-3' /> */}
                 </Col>
                 {/* <Col md={4}>
                     <Row className="d-flex flex-column align-items-center">
@@ -31,7 +49,7 @@ const ProductPage = () => {
                 </Col> */}
                 <Col md={4}>
                     <Card
-                        className="d-flex flex-column align-items-center justify-content-around m-5"
+                        className="d-flex flex-column align-items-center justify-content-around m-5 "
                         style={{ width: 300, height: 300, fontSize: 32, border: '5px solid lightgray' }}
                     >
                         <h3>{product.price} руб.</h3>

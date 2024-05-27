@@ -30,7 +30,7 @@ export default class ProductStore {
         this._selectedType = {}
         this._page = 1
         this._totalCount = 0
-        this._limit = 4
+        this._limit = 12
         this._basket = []
         this._userProducts = []
         makeAutoObservable(this)

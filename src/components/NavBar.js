@@ -17,6 +17,7 @@ const NavBar = observer(() => {
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+        navigate(SHOP_ROUTE)
     }
     return (
         <Navbar bg="dark" data-bs-theme="dark">
