@@ -11,7 +11,7 @@ const ProductItem = ({product}) => {
         onClick={() => navigate(PRODUCT_ROUTE + '/' + product.id)}
         >
             <Card style={{width: 150, cursor: 'pointer'}} border={"light"}>
-                <Image width={150} height={150} src={product.img}/>
+                <Image width={150} height={150} src={'http://localhost:5000/' + product.img}/>
                 <div>{product.name}</div>
                 <div>{product.price} руб.</div>
             </Card>
